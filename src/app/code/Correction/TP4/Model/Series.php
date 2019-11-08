@@ -20,7 +20,7 @@ class Series extends AbstractModel implements SeriesInterface
      *
      * @return int
      */
-    public function getSeriesId(): int
+    public function getSeriesId()
     {
         return $this->getData(self::SERIES_ID);
     }

@@ -11681,16 +11681,16 @@
         },
         {
             "name": "smile/elasticsuite",
-            "version": "2.8.2",
+            "version": "2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Smile-SA/elasticsuite.git",
-                "reference": "d6dc4ff011888a09cc894514aa3a827c2d6cd4a7"
+                "reference": "08ac95b6fb53565a51900bdefa19661cfbe36957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Smile-SA/elasticsuite/zipball/d6dc4ff011888a09cc894514aa3a827c2d6cd4a7",
-                "reference": "d6dc4ff011888a09cc894514aa3a827c2d6cd4a7",
+                "url": "https://api.github.com/repos/Smile-SA/elasticsuite/zipball/08ac95b6fb53565a51900bdefa19661cfbe36957",
+                "reference": "08ac95b6fb53565a51900bdefa19661cfbe36957",
                 "shasum": ""
             },
             "require": {
@@ -11787,7 +11787,7 @@
                 "search",
                 "setup"
             ],
-            "time": "2019-08-09T12:04:53+00:00"
+            "time": "2019-11-04T09:26:18+00:00"
         },
         {
             "name": "spomky-labs/otphp",

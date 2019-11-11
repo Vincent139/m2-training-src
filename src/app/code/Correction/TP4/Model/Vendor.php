@@ -1,12 +1,14 @@
 <?php
 namespace Correction\TP4\Model;
 
-use Correction\TP4\Api\Data\VendorInterface;
 use Magento\Framework\Model\AbstractModel;
 use Correction\TP4\Model\ResourceModel\Vendor as VendorResourceModel;
 
-class Vendor extends AbstractModel implements VendorInterface
+class Vendor extends AbstractModel
 {
+    const VENDOR_ID = 'vendor_id';
+    const NAME = 'name';
+
     /**
      * @inheritdoc
      */

@@ -1,6 +1,7 @@
 <?php
 namespace Correction\TP4\Model\ResourceModel;
 
+use Correction\TP4\Api\Data\VendorInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Vendor extends AbstractDb

@@ -2,6 +2,7 @@
 namespace Correction\TP3\Controller\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -13,6 +14,12 @@ class ListSeveral extends Action
     /** @var CollectionFactory */
     protected $collectionFactory;
 
+    /**
+     * ListSeveral constructor.
+     *
+     * @param CollectionFactory $collectionFactory
+     * @param Context $context
+     */
     public function __construct(
         CollectionFactory $collectionFactory,
         Context $context
@@ -29,8 +36,8 @@ class ListSeveral extends Action
         if (($type = $this->getRequest()->getParam('type'))) {
             $collection = $this->collectionFactory->create();
             $collection
-                ->addAttributeToFilter(ProductInterface::TYPE_ID, $type)
-                ->addAttributeToSelect(ProductInterface::NAME);
+                ->addAttributeToFilter('type_id', $type)
+                ->addAttributeToSelect('name');
             $sort = $this->getRequest()->getParam('sort');
             if ($sort) {
                 if (($order = $this->getRequest()->getParam('order')) && in_array($order,  [ 'asc', 'desc' ])) {
@@ -63,7 +70,7 @@ class ListSeveral extends Action
                 }
             }
             if ($collection->getSize()) {
-                /** @var ProductInterface $product */
+                /** @var Product $product */
                 foreach ($collection as $product) {
                     $data[] = [
                         'name' => $product->getName(),

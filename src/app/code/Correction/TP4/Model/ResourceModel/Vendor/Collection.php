@@ -12,6 +12,6 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Vendor::class, VendorResourceModel::class);
+        $this->_init(VendorModel::class, VendorResourceModel::class);
     }
 }

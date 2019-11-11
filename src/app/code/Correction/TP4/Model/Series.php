@@ -1,12 +1,15 @@
 <?php
 namespace Correction\TP4\Model;
 
-use Correction\TP4\Api\Data\SeriesInterface;
 use Magento\Framework\Model\AbstractModel;
 use Correction\TP4\Model\ResourceModel\Series as SeriesResourceModel;
 
-class Series extends AbstractModel implements SeriesInterface
+class Series extends AbstractModel
 {
+    const SERIES_ID = 'series_id';
+    const NAME = 'name';
+    const COLOR = 'color';
+
     /**
      * @inheritdoc
      */

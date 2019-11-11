@@ -1,7 +1,8 @@
 <?php
 namespace Correction\TP3\Controller\Product;
 
-use Magento\Catalog\Api\Data\ProductInterfaceFactory;
+use Magento\Catalog\Model\ProductFactory as ProductFactory;
+use Magento\Catalog\Model\ResourceModel\Product as ProductResourceModel;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -9,20 +10,26 @@ use Magento\Framework\Controller\ResultFactory;
 
 class ListOne extends Action
 {
-    /** @var ProductInterfaceFactory */
+    /** @var ProductFactory */
     protected $productFactory;
+
+    /** @var ProductResourceModel */
+    protected $productResourceModel;
 
     /**
      * ListOne constructor.
      *
-     * @param ProductInterfaceFactory $productFactory
+     * @param ProductFactory $productFactory
+     * @param ProductResourceModel $productResourceModel
      * @param Context $context
      */
     public function __construct(
-        ProductInterfaceFactory $productFactory,
+        ProductFactory $productFactory,
+        ProductResourceModel $productResourceModel,
         Context $context
     ) {
         $this->productFactory = $productFactory;
+        $this->productResourceModel = $productResourceModel;
 
         parent::__construct($context);
     }
@@ -36,7 +43,7 @@ class ListOne extends Action
         if ($id !== 0) {
             /** @var $product Product */
             $product = $this->productFactory->create();
-            $product->load($id);
+            $this->productResourceModel->load($product, $id);
             if ($product->getId()) {
                 $data[] = [
                     'name' => $product->getName(),

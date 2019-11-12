@@ -2,6 +2,7 @@
 namespace Correction\TP4\Model\ResourceModel;
 
 use Correction\TP4\Api\Data\VendorInterface;
+use Magento\Framework\Model\AbstractModel as AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Vendor extends AbstractDb
@@ -19,7 +20,7 @@ class Vendor extends AbstractDb
      *
      * @inheritDoc
      */
-    protected function _afterLoad(\Magento\Framework\Model\AbstractModel $object)
+    protected function _afterLoad(AbstractModel $object)
     {
         $connection = $this->getConnection();
 
@@ -41,7 +42,7 @@ class Vendor extends AbstractDb
      *
      * @inheritDoc
      */
-    protected function _afterSave(\Magento\Framework\Model\AbstractModel $object)
+    protected function _afterSave(AbstractModel $object)
     {
         $connection = $this->getConnection();
 

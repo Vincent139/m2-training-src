@@ -2,6 +2,7 @@
 namespace Correction\TP4\Controller\Series;
 
 use Correction\TP4\Controller\AbstractSave;
+use Correction\TP4\Exception\BadRequestException;
 use Correction\TP4\Model\SeriesFactory;
 use Correction\TP4\Model\ResourceModel\Series as SeriesResource;
 use Magento\Framework\App\Action\Context;
@@ -34,9 +35,13 @@ class Create extends AbstractSave
     public function getModel()
     {
         $name = $this->getRequest()->getParam('name');
-        if (empty($name)) throw new \Exception(sprintf('Expected non empty string parameter [%s]', 'name'));
+        if (empty($name)) {
+            throw new BadRequestException(sprintf('Expected non empty string parameter [%s]', 'name'));
+        }
         $color = $this->getRequest()->getParam('color');
-        if (empty($color)) throw new \Exception(sprintf('Expected non empty string parameter [%s]', 'color'));
+        if (empty($color)) {
+            throw new BadRequestException(sprintf('Expected non empty string parameter [%s]', 'color'));
+        }
 
         return $this->modelFactory->create([ 'data' => [ 'name' => $name, 'color' => $color ]])->setDataChanges(true);
     }

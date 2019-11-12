@@ -36,9 +36,9 @@ abstract class AbstractListOne extends Action
     {
         $data = [];
 
-        $id = intval($this->getRequest()->getParam('id'));
+        $id = (int)$this->getRequest()->getParam('id');
 
-        if ($id !== 0) {
+        if ($id != 0) {
             /** @var AbstractModel $model */
             $model = $this->modelFactory->create();
             $this->resourceModel->load($model, $id);

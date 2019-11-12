@@ -1,5 +1,5 @@
 <?php
-namespace Correction\TP4\Controller\Series;
+namespace Correction\TP4\Controller\Vendor;
 
 use Correction\TP4\Controller\AbstractListSeveral;
 use Correction\TP4\Model\ResourceModel\Vendor\CollectionFactory;

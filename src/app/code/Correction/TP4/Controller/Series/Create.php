@@ -38,6 +38,6 @@ class Create extends AbstractSave
         $color = $this->getRequest()->getParam('color');
         if (empty($color)) throw new \Exception(sprintf('Expected non empty string parameter [%s]', 'color'));
 
-        return $this->modelFactory->create([ 'name' => $name, 'color' => $color ]);
+        return $this->modelFactory->create([ 'data' => [ 'name' => $name, 'color' => $color ]])->setDataChanges(true);
     }
 }

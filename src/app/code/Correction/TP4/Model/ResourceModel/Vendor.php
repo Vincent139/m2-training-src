@@ -54,16 +54,23 @@ class Vendor extends AbstractDb
 
         /** @var array $data */
         $data = $object->getProductIds();
-        array_walk($data, function (&$val) use ($vendorId) {
-            $val = [ $vendorId, $val ];
-            return $val;
-        });
+        if ($data) {
+            array_walk($data, function (&$val) use ($vendorId) {
+                $val = [$vendorId, $val];
+                return $val;
+            });
 
-        $connection->insertArray(
-            'tp4_catalog_product_vendor',
-            [ 'vendor_id', 'product_id' ],
-            $data
-        );
+            $connection->insertArray(
+                'tp4_catalog_product_vendor',
+                ['vendor_id', 'product_id'],
+                $data
+            );
+        } else {
+            $connection->delete(
+                'tp4_catalog_product_vendor',
+                [ 'vendor_id = ?' => $vendorId ]
+            );
+        }
 
         return $this;
     }

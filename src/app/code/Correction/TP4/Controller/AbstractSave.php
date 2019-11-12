@@ -34,7 +34,7 @@ abstract class AbstractSave extends Action
      * @return AbstractModel
      * @throws \Exception
      */
-    public abstract function getModel();
+    abstract public function getModel();
 
     /**
      * @inheritDoc
@@ -48,7 +48,7 @@ abstract class AbstractSave extends Action
 
         try {
             $model = $this->getModel();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $error = true;
             $data[] = [
                 'error' => sprintf('Exception while creating model instance : %s', $e->getMessage())
@@ -63,7 +63,7 @@ abstract class AbstractSave extends Action
                 ];
             } catch (AlreadyExistsException $e) {
                 $data[] = [
-                    'error' => sprintf('Unique constraint failed while saving model')
+                    'error' => sprintf('AlreadyExistsException while saving model : %s', $e->getMessage())
                 ];
             }
         }

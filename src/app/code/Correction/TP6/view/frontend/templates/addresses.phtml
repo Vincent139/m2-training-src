@@ -7,9 +7,9 @@ $addresses = $block->getAddresses();
 <ul>
 <?php foreach ($addresses as $address) : ?>
     <li>
-        <span><?php echo $address->getStreet(); ?></span>
+        <span><?php echo implode(' - ', $address->getStreet()); ?></span>
         <span><?php echo $address->getCity(); ?></span>
-        <span><?php echo $address->getZipCode(); ?></span>
+        <span><?php echo $address->getPostcode(); ?></span>
         <span><?php echo $address->getCountry(); ?></span>
     </li>
 <?php endforeach; ?>

@@ -1,26 +1,25 @@
 <?php
 namespace Correction\TP6\Block\Customer;
 
+use Magento\Framework\Stdlib\DateTime\DateTime;
+
 class Message extends \Magento\Framework\View\Element\Template
 {
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    protected $customerSession;
+    /** @var DateTime */
+    protected $dateTime;
 
     /**
      * Message constructor.
      *
-     * @param \Magento\Customer\Model\Session $customerSession
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
     public function __construct(
-        \Magento\Customer\Model\Session $customerSession,
+        DateTime $dateTime,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     ) {
-        $this->customerSession = $customerSession;
+        $this->dateTime = $dateTime;
 
         parent::__construct($context, $data);
     }
@@ -38,6 +37,6 @@ class Message extends \Magento\Framework\View\Element\Template
      */
     public function getCurrentDataTime()
     {
-        return 'abcd';
+        return $this->dateTime->date();
     }
 }

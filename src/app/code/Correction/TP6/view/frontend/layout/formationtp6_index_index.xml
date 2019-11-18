@@ -2,13 +2,13 @@
 <page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="sidebar.main">
-            <block class="Correction\Formation_TP6\Block\Customer\Addresses" name="addresses" alias="customer.addresses" template="Correction_TP6::addresses.phtml" />
+            <block class="Correction\TP6\Block\Customer\Addresses" name="addresses" as="customer.addresses" template="Correction_TP6::addresses.phtml" />
         </referenceContainer>
         <referenceContainer name="main">
-            <block class="Correction\Formation_TP6\Block\Customer\Coordinates" name="coordinates" alias="customer.coordinates" template="Correction_TP6::coordinates.phtml" />
+            <block class="Correction\TP6\Block\Customer\Coordinates" name="coordinates" as="customer.coordinates" template="Correction_TP6::coordinates.phtml" />
         </referenceContainer>
         <referenceContainer name="sidebar.additional">
-            <block class="Correction\Formation_TP6\Block\Customer\Message" name="message" alias="customer.message" template="Correction_TP6::message.phtml" />
+            <block class="Correction\TP6\Block\Customer\Message" name="message" as="customer.message" template="Correction_TP6::message.phtml" cacheable="false" />
         </referenceContainer>
     </body>
 </page>

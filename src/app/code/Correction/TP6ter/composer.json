@@ -1,8 +1,10 @@
 {
-    "name": "formation/tp6",
+    "name": "formation/tp6ter",
     "description": "N/A",
     "require": {
-        "magento/framework": "102.0.*"
+        "magento/framework": "102.0.*",
+        "formation/tp4": "1.0.0",
+        "magento/module-catalog": "103.0.3"
     },
     "type": "magento2-module",
     "license": [
@@ -14,7 +16,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Correction\\TP6\\": ""
+            "Correction\\TP6ter\\": ""
         }
     },
     "version": "1.0.0"

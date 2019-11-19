@@ -1,5 +1,5 @@
 <?php
-namespace Correction\TP6\Block\Customer;
+namespace Correction\TP6bis\Block\Customer;
 
 class Message extends \Magento\Framework\View\Element\Template
 {
@@ -8,6 +8,6 @@ class Message extends \Magento\Framework\View\Element\Template
      */
     public function getMessage()
     {
-        return 'Bienvenue sur le TP6 !';
+        return 'Bienvenue sur les TP6 et TP6bis !';
     }
 }

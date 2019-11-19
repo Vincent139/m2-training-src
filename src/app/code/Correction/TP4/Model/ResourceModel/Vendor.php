@@ -32,7 +32,7 @@ class Vendor extends AbstractDb
         );
 
         $productIds = $this->getConnection()->fetchCol($select, [':vendor_id' => $object->getId()]);
-        $object->setProductIds($productIds);
+        $object->setData('product_ids', $productIds);
 
         return $this;
     }
@@ -54,7 +54,7 @@ class Vendor extends AbstractDb
         $vendorId = $object->getId();
 
         /** @var array $data */
-        $data = $object->getProductIds();
+        $data = $object->getData('product_ids');
         if ($data) {
             array_walk($data, function (&$val) use ($vendorId) {
                 $val = [$vendorId, $val];

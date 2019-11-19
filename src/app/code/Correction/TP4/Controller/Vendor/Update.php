@@ -54,7 +54,7 @@ class Update extends AbstractSave
                 foreach ($productIds as $productId) {
                     if ((int)$productId == 0) {
                         throw new BadRequestException(
-                            sprintf('Parameter [%s] must be a list of integer > 0 separated with comma', 'product')
+                            sprintf('Parameter [%s] must be a list of integer > 0 separated with comma', 'products')
                         );
                     }
                 }

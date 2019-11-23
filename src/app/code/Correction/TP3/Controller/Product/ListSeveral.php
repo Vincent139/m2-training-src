@@ -1,7 +1,6 @@
 <?php
 namespace Correction\TP3\Controller\Product;
 
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\Action\Action;

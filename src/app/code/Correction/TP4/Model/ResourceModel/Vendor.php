@@ -1,7 +1,6 @@
 <?php
 namespace Correction\TP4\Model\ResourceModel;
 
-use Correction\TP4\Api\Data\VendorInterface;
 use Magento\Framework\Model\AbstractModel as AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
@@ -31,7 +30,7 @@ class Vendor extends AbstractDb
             'vendor_id = :vendor_id'
         );
 
-        $productIds = $this->getConnection()->fetchCol($select, [':vendor_id' => $object->getId()]);
+        $productIds = $connection->fetchCol($select, [':vendor_id' => $object->getId()]);
         $object->setData('product_ids', $productIds);
 
         return $this;

@@ -3,8 +3,8 @@
     "description": "N/A",
     "require": {
         "magento/framework": "102.0.*",
-        "formation/tp4": "1.0.0",
-        "magento/module-catalog": "~103.0.3"
+        "magento/module-catalog": "~102.0.3",
+        "formation/tp6": "1.0.0"
     },
     "type": "magento2-module",
     "license": [
@@ -16,7 +16,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Correction\\TP6ter\\": ""
+            "Correction\\TP7\\": ""
         }
     },
     "version": "1.0.0"

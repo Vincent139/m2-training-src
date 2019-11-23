@@ -3,6 +3,8 @@ namespace Correction\TP6\Block\Customer;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\Customer;
+use Magento\Customer\Model\Session;
 
 class Coordinates extends \Magento\Framework\View\Element\Template
 {
@@ -35,31 +37,36 @@ class Coordinates extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * Return the Customer given the customer Id stored in the session.
+     * Return the logged in customer if any, null otherwise.
      *
-     * @return CustomerInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @return Customer|null
      */
     public function getCustomer()
     {
-        return $this->customerRepository->getById($this->customerSession->getCustomerId());
+        if ($this->customerSession->isLoggedIn()) {
+            return $this->customerSession->getCustomer();
+        } else {
+            return null;
+        }
     }
 
     /**
+     * Return assoc array with entries name, firstname, email.
      *
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getCustomerData()
     {
         $customer = $this->getCustomer();
 
-        return [
-            'name' => $customer->getLastname(),
-            'forname' => $customer->getFirstname(),
-            'email' => $customer->getEmail()
-        ];
+        if ($customer) {
+            return [
+                'name' => $customer->getData('lastname'),
+                'firstname' => $customer->getData('firstname'),
+                'email' => $customer->getEmail()
+            ];
+        } else {
+            return [];
+        }
     }
 }

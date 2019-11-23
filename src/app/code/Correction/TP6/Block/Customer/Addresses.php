@@ -1,6 +1,8 @@
 <?php
 namespace Correction\TP6\Block\Customer;
 
+use Magento\Customer\Model\Customer;
+
 class Addresses extends \Magento\Framework\View\Element\Template
 {
     /**
@@ -23,6 +25,20 @@ class Addresses extends \Magento\Framework\View\Element\Template
         $this->customerSession = $customerSession;
 
         parent::__construct($context, $data);
+    }
+
+    /**
+     * Return the logged in customer if any, null otherwise.
+     *
+     * @return Customer|null
+     */
+    public function getCustomer()
+    {
+        if ($this->customerSession->isLoggedIn()) {
+            return $this->customerSession->getCustomer();
+        } else {
+            return null;
+        }
     }
 
     /**

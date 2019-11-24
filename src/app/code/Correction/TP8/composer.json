@@ -1,10 +1,9 @@
 {
-    "name": "formation/tp7",
+    "name": "formation/tp8",
     "description": "N/A",
     "require": {
         "magento/framework": "102.0.*",
-        "magento/module-catalog": "~102.0.3",
-        "formation/tp6": "1.0.0"
+        "formation/tp7": "1.0.0"
     },
     "type": "magento2-module",
     "license": [
@@ -16,7 +15,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Correction\\TP7\\": ""
+            "Correction\\TP8\\": ""
         }
     },
     "version": "1.0.0"

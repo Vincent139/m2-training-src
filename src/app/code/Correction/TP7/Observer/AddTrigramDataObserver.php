@@ -21,7 +21,7 @@ class AddTrigramDataObserver implements ObserverInterface
 
         $customer->setData(
             self::TRIGRAM,
-            $customer->getData('firstname')[0].substr($customer->getData('lastname'), 0, 2)
+            $customer->getData('firstname')[0].strtoupper(substr($customer->getData('lastname'), 0, 2))
         );
     }
 }

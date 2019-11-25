@@ -15,21 +15,23 @@ abstract class AbstractDelete extends Action
     protected $modelFactory;
 
     /**
-     * AbstractSave constructor.
+     * AbstractDelete constructor.
      *
      * @param AbstractDb $resourceModel
-     * @param $modelFactory
      * @param Context $context
      */
     public function __construct(
         AbstractDb $resourceModel,
-        $modelFactory,
         Context $context
     ) {
         $this->resourceModel = $resourceModel;
-        $this->modelFactory = $modelFactory;
 
         parent::__construct($context);
+    }
+
+    protected function _init($modelFactory)
+    {
+        $this->modelFactory = $modelFactory;
     }
 
     /**

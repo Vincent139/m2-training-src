@@ -17,19 +17,21 @@ abstract class AbstractListOne extends Action
     /**
      * AbstractListOne constructor.
      *
-     * @param $modelFactory
      * @param AbstractDb $resourceModel
      * @param Context $context
      */
     public function __construct(
-        $modelFactory,
         AbstractDb $resourceModel,
         Context $context
     ) {
-        $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
 
         parent::__construct($context);
+    }
+
+    protected function _init($modelFactory)
+    {
+        $this->modelFactory = $modelFactory;
     }
 
     public function execute()

@@ -2,7 +2,6 @@
 namespace Correction\TP4\Controller;
 
 use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Model\AbstractModel;
 
@@ -10,19 +9,9 @@ class AbstractListSeveral extends Action
 {
     protected $collectionFactory;
 
-    /**
-     * AbstractListSeveral constructor.
-     *
-     * @param $collectionFactory
-     * @param Context $context
-     */
-    public function __construct(
-        $collectionFactory,
-        Context $context
-    ) {
+    protected function _init($collectionFactory)
+    {
         $this->collectionFactory = $collectionFactory;
-
-        parent::__construct($context);
     }
 
     public function execute()

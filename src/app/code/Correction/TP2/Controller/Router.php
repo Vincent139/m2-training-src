@@ -11,7 +11,7 @@ class Router implements \Magento\Framework\App\RouterInterface
     protected $actionFactory;
 
     /**
-     *Router constructor.
+     * Router constructor.
      *
      * @param \Magento\Framework\App\ActionFactory $actionFactory
      */
@@ -29,15 +29,27 @@ class Router implements \Magento\Framework\App\RouterInterface
      */
     public function match(RequestInterface $request)
     {
-        switch(explode('/', $request->getPathInfo())[1]) {
+        switch (explode('/', $request->getPathInfo())[1]) {
             case 'test1':
-                $request->setPathInfo(preg_replace('#test1(/.*)?#', 'formationtp2/json/test1$1', $request->getPathInfo()));
+                $request->setPathInfo(
+                    preg_replace(
+                        '#test1(/.*)?#',
+                        'formationtp2/json/test1$1',
+                        $request->getPathInfo()
+                    )
+                );
                 return $this->actionFactory->create(
                     \Magento\Framework\App\Action\Forward::class
                 );
 
             case 'test2':
-                $request->setPathInfo(preg_replace('#test2(/.*)?#', 'formationtp2/json/test2$1', $request->getPathInfo()));
+                $request->setPathInfo(
+                    preg_replace(
+                        '#test2(/.*)?#',
+                        'formationtp2/json/test2$1',
+                        $request->getPathInfo()
+                    )
+                );
                 return $this->actionFactory->create(
                     \Magento\Framework\App\Action\Forward::class
                 );

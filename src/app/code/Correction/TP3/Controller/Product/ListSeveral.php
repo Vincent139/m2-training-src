@@ -39,9 +39,21 @@ class ListSeveral extends Action
                 ->addAttributeToSelect('name');
             $sort = $this->getRequest()->getParam('sort');
             if ($sort) {
-                if (($order = $this->getRequest()->getParam('order')) && in_array($order,  [ 'asc', 'desc' ])) {
+                if (($order = $this->getRequest()->getParam('order')) && in_array($order, [ 'asc', 'desc' ])) {
                     $order = ($order == 'asc') ? Collection::SORT_ORDER_ASC : Collection::SORT_ORDER_DESC;
-                    if (in_array($sort, [ 'entity_id', 'attribute_set_id', 'type_id', 'sku', 'has_options', 'required_options', 'created_at', 'updated_at' ])) {
+                    if (in_array(
+                        $sort,
+                        [
+                            'entity_id',
+                            'attribute_set_id',
+                            'type_id',
+                            'sku',
+                            'has_options',
+                            'required_options',
+                            'created_at',
+                            'updated_at'
+                        ]
+                    )) {
                         $collection->addOrder($sort, $order);
                     } else {
                         $collection->addAttributeToSort($sort, $order);
@@ -54,8 +66,8 @@ class ListSeveral extends Action
                 }
             }
             if (($page = $this->getRequest()->getParam('page')) || ($size = $this->getRequest()->getParam('size'))) {
-                if (intval($page) !== 0) {
-                    if (($size = intval($this->getRequest()->getParam('size'))) !== 0) {
+                if ((int)$page !== 0) {
+                    if (($size = (int)$this->getRequest()->getParam('size')) !== 0) {
                         $collection->setPage($page, $size);
                     } else {
                         $data[] = [

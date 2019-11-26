@@ -20,6 +20,8 @@ class ListOne extends AbstractListOne
         VendorResource $resourceModel,
         Context $context
     ) {
-        parent::__construct($modelFactory, $resourceModel, $context);
+        parent::__construct($resourceModel, $context);
+
+        $this->_init($modelFactory);
     }
 }

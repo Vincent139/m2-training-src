@@ -20,6 +20,8 @@ class Delete extends AbstractDelete
         VendorResource $resourceModel,
         Context $context
     ) {
-        parent::__construct($resourceModel, $modelFactory, $context);
+        parent::__construct($resourceModel, $context);
+
+        $this->_init($modelFactory);
     }
 }

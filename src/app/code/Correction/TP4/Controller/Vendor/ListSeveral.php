@@ -17,6 +17,8 @@ class ListSeveral extends AbstractListSeveral
         CollectionFactory $collectionFactory,
         Context $context
     ) {
-        parent::__construct($collectionFactory, $context);
+        parent::__construct($context);
+
+        $this->_init($collectionFactory);
     }
 }

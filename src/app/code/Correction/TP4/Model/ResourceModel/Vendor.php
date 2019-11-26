@@ -65,11 +65,6 @@ class Vendor extends AbstractDb
                 ['vendor_id', 'product_id'],
                 $data
             );
-        } else {
-            $connection->delete(
-                'tp4_catalog_product_vendor',
-                [ 'vendor_id = ?' => $vendorId ]
-            );
         }
 
         return $this;

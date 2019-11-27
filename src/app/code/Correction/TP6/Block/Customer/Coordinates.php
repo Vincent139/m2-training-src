@@ -1,10 +1,7 @@
 <?php
 namespace Correction\TP6\Block\Customer;
 
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Customer;
-use Magento\Customer\Model\Session;
 
 class Coordinates extends \Magento\Framework\View\Element\Template
 {
@@ -13,25 +10,19 @@ class Coordinates extends \Magento\Framework\View\Element\Template
      */
     protected $customerSession;
 
-    /** @var CustomerRepositoryInterface */
-    protected $customerRepository;
-
     /**
      * Coordinates constructor.
      *
      * @param \Magento\Customer\Model\Session $customerSession
-     * @param CustomerRepositoryInterface $customerRepository
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
     public function __construct(
         \Magento\Customer\Model\Session $customerSession,
-        CustomerRepositoryInterface $customerRepository,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     ) {
         $this->customerSession = $customerSession;
-        $this->customerRepository = $customerRepository;
 
         parent::__construct($context, $data);
     }

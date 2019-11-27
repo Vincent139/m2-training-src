@@ -9,6 +9,8 @@ class Vendor extends AbstractModel
     const VENDOR_ID = 'vendor_id';
     const NAME = 'name';
 
+    protected $_idFieldName = 'vendor_id';
+
     /**
      * @inheritdoc
      */
@@ -33,7 +35,7 @@ class Vendor extends AbstractModel
      * @param int $vendorId
      * @return $this
      */
-    public function setVendorId(int $vendorId)
+    public function setVendorId($vendorId)
     {
         return $this->setData(self::VENDOR_ID, $vendorId);
     }
@@ -54,7 +56,7 @@ class Vendor extends AbstractModel
      * @param string $name
      * @return $this
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         return $this->setData(self::NAME, $name);
     }

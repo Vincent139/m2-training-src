@@ -10,6 +10,8 @@ class Series extends AbstractModel
     const NAME = 'name';
     const COLOR = 'color';
 
+    protected $_idFieldName = 'series_id';
+
     /**
      * @inheritdoc
      */
@@ -34,7 +36,7 @@ class Series extends AbstractModel
      * @param int $seriesId
      * @return $this
      */
-    public function setSeriesId(int $seriesId)
+    public function setSeriesId($seriesId)
     {
         return $this->setData(self::SERIES_ID, $seriesId);
     }
@@ -55,7 +57,7 @@ class Series extends AbstractModel
      * @param string $name
      * @return $this
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         return $this->setData(self::NAME, $name);
     }

@@ -48,6 +48,11 @@ class Addresses extends \Magento\Framework\View\Element\Template
      */
     public function getAddresses()
     {
-        return $this->customerSession->getCustomer()->getAddresses();
+        $customer = $this->getCustomer();
+        if ($customer) {
+            return $customer->getAddresses();
+        } else {
+            return [];
+        }
     }
 }

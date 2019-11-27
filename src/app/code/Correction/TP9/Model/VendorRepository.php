@@ -101,6 +101,10 @@ class VendorRepository implements VendorRepositoryInterface
         $model = $this->modelFactory->create();
         $this->resourceModel->load($model, $id);
 
+        if (!$model->getId()) {
+            throw new NoSuchEntityException();
+        }
+
         return $this->dataObjectConverterHelper->getDataObjectFromModel($model);
     }
 
@@ -124,11 +128,7 @@ class VendorRepository implements VendorRepositoryInterface
     }
 
     /**
-     * Get a list of product ids associated with a vendor.
-     *
-     * @param int $id
-     * @return array
-     * @throws NoSuchEntityException
+     * @inheritDoc
      */
     public function getAssociatedProductIds($id)
     {

@@ -1,6 +1,7 @@
 <?php
 namespace Correction\TP9\Controller\Vendors;
 
+use Correction\TP4\Model\Vendor as VendorModel;
 use Correction\TP9\Api\VendorRepositoryInterface;
 use Correction\TP9\Helper\VendorDataObjectConverter;
 use Magento\Framework\App\Action\Action;
@@ -57,17 +58,30 @@ class Save extends Action
                 'error' => sprintf('Expected mandatory string parameter [%s]', 'name')
             ];
         } else {
-            $model = $this->vendorFactory->create([ 'data' => [ 'name' => $name ]]);
+            $dataObject = [ 'name' => $name ];
 
-            try {
-                $dataObject = $this->vendorRepository->save($this->dataObjectConverter->getDataObjectFromModel($model));
-                $data [] = [
-                    'info' => sprintf('Data object saved with id [%d]', $dataObject->getId())
-                ];
-            } catch (AlreadyExistsException $e) {
+            $id = $this->getRequest()->getParam('id');
+            if ($id !== null && (int)$id === 0) {
                 $data[] = [
-                    'error' => sprintf('AlreadyExistsException while saving data object : %s', $e->getMessage())
+                    'error' => sprintf('Expected parameter [%s] integer > 0', 'id')
                 ];
+            } else {
+                $dataObject['id'] = $id;
+                /** @var VendorModel $model */
+                $model = $this->vendorFactory->create(['data' => $dataObject]);
+
+                try {
+                    $dataObject = $this->vendorRepository->save(
+                        $this->dataObjectConverter->getDataObjectFromModel($model)
+                    );
+                    $data [] = [
+                        'info' => sprintf('Data object saved with id [%d]', $dataObject->getId())
+                    ];
+                } catch (AlreadyExistsException $e) {
+                    $data[] = [
+                        'error' => sprintf('AlreadyExistsException while saving data object : %s', $e->getMessage())
+                    ];
+                }
             }
         }
 

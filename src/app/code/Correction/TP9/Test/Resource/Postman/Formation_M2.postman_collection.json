@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "349cb3de-f438-4955-83cb-5dc65d1a07b9",
+		"name": "Formation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TP9 get by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://formation.m2.local/rest/V1/vendors/1",
+					"protocol": "https",
+					"host": [
+						"formation",
+						"m2",
+						"local"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"vendors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TP9 search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://formation.m2.local/rest/V1/vendors/search?searchCriteria[filter_groups][0][filters][0][field]=name&searchCriteria[filter_groups][0][filters][0][value]=alpha",
+					"protocol": "https",
+					"host": [
+						"formation",
+						"m2",
+						"local"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"vendors",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][field]",
+							"value": "name"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][value]",
+							"value": "alpha"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TP9 get admin token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"admin123\"\n}"
+				},
+				"url": {
+					"raw": "https://formation.m2.local/index.php/rest/V1/integration/admin/token",
+					"protocol": "https",
+					"host": [
+						"formation",
+						"m2",
+						"local"
+					],
+					"path": [
+						"index.php",
+						"rest",
+						"V1",
+						"integration",
+						"admin",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TP9 save (create)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dataObject\": {\n\t\t\"name\": \"before alpha\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "https://formation.m2.local/rest/V1/vendors",
+					"protocol": "https",
+					"host": [
+						"formation",
+						"m2",
+						"local"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"vendors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TP9 save (update)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dataObject\": {\n\t\t\"id\": 9,\n\t\t\"name\": \"before alpha renamed\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "https://formation.m2.local/rest/V1/vendors",
+					"protocol": "https",
+					"host": [
+						"formation",
+						"m2",
+						"local"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"vendors"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "v3o45llgjvvkc37vobrpt7lgj87xm7dc",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b216f1a8-c61f-4424-af2a-354fec98c333",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "461c775d-e6b8-4b6f-a36b-030ee9ff4b07",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

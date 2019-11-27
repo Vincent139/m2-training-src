@@ -8,8 +8,9 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Correction\TP4\Model\VendorFactory;
+use Magento\Framework\Exception\NoSuchEntityException;
 
-class Save extends Action
+class ProductIds extends Action
 {
     /** @var VendorRepositoryInterface */
     protected $vendorRepository;
@@ -51,22 +52,18 @@ class Save extends Action
     {
         $data = [];
 
-        $name = $this->getRequest()->getParam('name');
-        if (!$name) {
+        $id = (int)$this->getRequest()->getParam('id');
+        if ($id === 0) {
             $data[] = [
-                'error' => sprintf('Expected mandatory string parameter [%s]', 'name')
+                'error' => sprintf('Require parameter [%s] integer > 0', 'id')
             ];
         } else {
-            $model = $this->vendorFactory->create([ 'data' => [ 'name' => $name ]]);
-
             try {
-                $dataObject = $this->vendorRepository->save($this->dataObjectConverter->getDataObjectFromModel($model));
-                $data [] = [
-                    'info' => sprintf('Data object saved with id [%d]', $dataObject->getId())
-                ];
-            } catch (AlreadyExistsException $e) {
+                $productIds = $this->vendorRepository->getAssociatedProductIds($id);
+                $data [] = $productIds;
+            } catch (NoSuchEntityException $e) {
                 $data[] = [
-                    'error' => sprintf('AlreadyExistsException while saving data object : %s', $e->getMessage())
+                    'error' => sprintf('NoSuchEntityException while loading data object : %s', $e->getMessage())
                 ];
             }
         }

@@ -19,6 +19,7 @@ use Correction\TP4\Model\ResourceModel\Vendor\CollectionFactory as VendorCollect
 use Correction\TP4\Model\ResourceModel\Vendor\Collection as VendorCollection;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class VendorRepository implements VendorRepositoryInterface
 {
@@ -120,5 +121,21 @@ class VendorRepository implements VendorRepositoryInterface
         $searchResult->setTotalCount($collection->getSize());
 
         return $searchResult;
+    }
+
+    /**
+     * Get a list of product ids associated with a vendor.
+     *
+     * @param int $id
+     * @return array
+     * @throws NoSuchEntityException
+     */
+    public function getAssociatedProductIds($id)
+    {
+        /** @var VendorModel $model */
+        $model = $this->modelFactory->create();
+        $this->resourceModel->load($model, $id);
+
+        return $model->getData('product_ids');
     }
 }

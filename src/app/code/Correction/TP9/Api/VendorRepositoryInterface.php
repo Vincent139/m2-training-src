@@ -37,4 +37,13 @@ interface VendorRepositoryInterface
      * @return VendorSearchResultsInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
+
+    /**
+     * Get a list of product ids associated with a vendor.
+     *
+     * @param int $id
+     * @return array
+     * @throws NoSuchEntityException
+     */
+    public function getAssociatedProductIds($id);
 }

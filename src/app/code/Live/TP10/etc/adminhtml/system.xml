@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="easysoft" translate="label" sortOrder="10">
+            <label>EasySoft</label>
+        </tab>
+        <section id="demo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Demo</label>
+            <tab>easysoft</tab>
+            <resource>Live_TP10::config_demo</resource>
+            <group id="easysoft_demo_feellucky" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>I feel lucky</label>
+                <field id="enable_feellucky" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Enable Feel Lucky</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Activate to display Feel lucky button on frontend</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

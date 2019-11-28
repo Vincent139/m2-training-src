@@ -9,7 +9,7 @@
         </referenceContainer>
         <referenceContainer name="sidebar.additional">
             <block class="Correction\TP6\Block\Customer\Message" name="tp6.message" template="Correction_TP6::message.phtml" />
-            <block class="Correction\TP6\Block\Customer\DateTime" name="tp6.dateTime" template="Correction_TP6::dateTime.phtml" cacheable="false" />
+            <block class="Correction\TP6\Block\Customer\DateTime" name="tp6.dateTime" template="Correction_TP6::dateTime.phtml" />
         </referenceContainer>
     </body>
 </page>

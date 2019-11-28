@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <demo>
+            <easysoft_demo_feellucky>
+                <enable_feellucky>0</enable_feellucky>
+            </easysoft_demo_feellucky>
+        </demo>
+    </default>
+</config>

@@ -116,11 +116,11 @@ class VendorRepository implements VendorRepositoryInterface
         /** @var VendorCollection $collection */
         $collection = $this->collectionFactory->create();
 
+        $this->collectionProcessor->process($searchCriteria, $collection);
+
         /** @var VendorSearchResultsInterface $searchResult */
         $searchResult = $this->searchResultsFactory->create();
         $searchResult->setSearchCriteria($searchCriteria);
-
-        $this->collectionProcessor->process($searchCriteria, $collection);
         $searchResult->setItems($collection->getItems());
         $searchResult->setTotalCount($collection->getSize());
 

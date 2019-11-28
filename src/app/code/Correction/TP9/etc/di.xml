@@ -3,4 +3,7 @@
     <preference for="Correction\TP9\Api\Data\VendorSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
     <preference for="Correction\TP9\Api\VendorRepositoryInterface" type="Correction\TP9\Model\VendorRepository" />
     <preference for="Correction\TP9\Api\Data\VendorInterface" type="Correction\TP9\Model\Data\Vendor" />
+    <preference for="Correction\TP9\Api\Data\SeriesSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Correction\TP9\Api\SeriesRepositoryInterface" type="Correction\TP9\Model\SeriesRepository" />
+    <preference for="Correction\TP9\Api\Data\SeriesInterface" type="Correction\TP9\Model\Data\Series" />
 </config>

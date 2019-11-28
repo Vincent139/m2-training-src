@@ -1,10 +1,10 @@
 <?php
 namespace Correction\TP9\Model;
 
-use Correction\TP9\Api\Data\VendorInterface;
-use Correction\TP9\Api\Data\VendorSearchResultsInterface;
-use Correction\TP9\Api\Data\VendorSearchResultsInterfaceFactory;
-use Correction\TP9\Api\VendorRepositoryInterface;
+use Correction\TP9\Api\Data\SeriesInterface;
+use Correction\TP9\Api\Data\SeriesSearchResultsInterface;
+use Correction\TP9\Api\Data\SeriesSearchResultsInterfaceFactory;
+use Correction\TP9\Api\SeriesRepositoryInterface;
 
 use Correction\TP9\Helper\VendorDataObjectConverter;
 use Magento\Framework\Api\DataObjectHelper;
@@ -12,21 +12,21 @@ use Magento\Framework\Api\Search\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\FilterBuilder;
 
-use Correction\TP4\Model\VendorFactory;
-use Correction\TP4\Model\Vendor as VendorModel;
-use Correction\TP4\Model\ResourceModel\Vendor as VendorResourceModel;
-use Correction\TP4\Model\ResourceModel\Vendor\CollectionFactory as VendorCollectionFactory;
-use Correction\TP4\Model\ResourceModel\Vendor\Collection as VendorCollection;
+use Correction\TP4\Model\SeriesFactory;
+use Correction\TP4\Model\Series as SeriesModel;
+use Correction\TP4\Model\ResourceModel\Series as SeriesResourceModel;
+use Correction\TP4\Model\ResourceModel\Series\CollectionFactory as SeriesCollectionFactory;
+use Correction\TP4\Model\ResourceModel\Series\Collection as SeriesCollection;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-class VendorRepository implements VendorRepositoryInterface
+class SeriesRepository implements SeriesRepositoryInterface
 {
-    /** @var VendorFactory */
+    /** @var SeriesFactory */
     protected $modelFactory;
 
-    /** @var VendorSearchResultsInterfaceFactory */
+    /** @var SeriesSearchResultsInterfaceFactory */
     protected $searchResultsFactory;
 
     /** @var SearchCriteriaBuilder */
@@ -35,10 +35,10 @@ class VendorRepository implements VendorRepositoryInterface
     /** @var FilterBuilder */
     protected $filterBuilder;
 
-    /** @var VendorCollectionFactory */
+    /** @var SeriesCollectionFactory */
     protected $collectionFactory;
 
-    /** @var VendorResourceModel */
+    /** @var SeriesResourceModel */
     protected $resourceModel;
 
     /** @var DataObjectHelper */
@@ -50,23 +50,23 @@ class VendorRepository implements VendorRepositoryInterface
     /**
      * VendorRepository constructor.
      *
-     * @param VendorFactory $modelFactory
-     * @param VendorSearchResultsInterfaceFactory $searchResultsFactory
-     * @param VendorCollectionFactory $collectionFactory
+     * @param SeriesFactory $modelFactory
+     * @param SeriesSearchResultsInterfaceFactory $searchResultsFactory
+     * @param SeriesCollectionFactory $collectionFactory
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param VendorResourceModel $resourceModel
+     * @param SeriesResourceModel $resourceModel
      * @param FilterBuilder $filterBuilder
-     * @param VendorDataObjectConverter $dataObjectConverterHelper
+     * @param SeriesDataObjectConverter $dataObjectConverterHelper
      * @param CollectionProcessorInterface $collectionProcessor
      */
     public function __construct(
-        VendorFactory $modelFactory,
-        VendorSearchResultsInterfaceFactory $searchResultsFactory,
-        VendorCollectionFactory $collectionFactory,
+        SeriesFactory $modelFactory,
+        SeriesSearchResultsInterfaceFactory $searchResultsFactory,
+        SeriesCollectionFactory $collectionFactory,
         SearchCriteriaBuilder $searchCriteriaBuilder,
-        VendorResourceModel $resourceModel,
+        SeriesResourceModel $resourceModel,
         FilterBuilder $filterBuilder,
-        VendorDataObjectConverter $dataObjectConverterHelper,
+        SeriesDataObjectConverter $dataObjectConverterHelper,
         CollectionProcessorInterface $collectionProcessor
     ) {
         $this->modelFactory = $modelFactory;
@@ -82,7 +82,7 @@ class VendorRepository implements VendorRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function save(VendorInterface $dataObject)
+    public function save(SeriesInterface $dataObject)
     {
         $model = $this->dataObjectConverterHelper->getModelFromDataObject($dataObject);
         $this->resourceModel->save($model);
@@ -97,7 +97,7 @@ class VendorRepository implements VendorRepositoryInterface
      */
     public function get($id)
     {
-        /** @var VendorModel $model */
+        /** @var SeriesModel $model */
         $model = $this->modelFactory->create();
         $this->resourceModel->load($model, $id);
 
@@ -123,29 +123,17 @@ class VendorRepository implements VendorRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var VendorCollection $collection */
+        /** @var SeriesCollection $collection */
         $collection = $this->collectionFactory->create();
 
         $this->collectionProcessor->process($searchCriteria, $collection);
 
-        /** @var VendorSearchResultsInterface $searchResult */
+        /** @var SeriesSearchResultsInterface $searchResult */
         $searchResult = $this->searchResultsFactory->create();
         $searchResult->setSearchCriteria($searchCriteria);
         $searchResult->setItems($collection->getItems());
         $searchResult->setTotalCount($collection->getSize());
 
         return $searchResult;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getAssociatedProductIds($id)
-    {
-        /** @var VendorModel $model */
-        $model = $this->modelFactory->create();
-        $this->resourceModel->load($model, $id);
-
-        return $model->getData('product_ids');
     }
 }

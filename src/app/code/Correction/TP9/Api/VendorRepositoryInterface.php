@@ -28,6 +28,15 @@ interface VendorRepositoryInterface
     public function get($id);
 
     /**
+     * Delete a vendor by its id
+     *
+     * @param int $id
+     * @return void
+     * @throws NoSuchEntityException
+     */
+    public function delete($id);
+
+    /**
      * Get a list of vendor(s)
      *
      * @param \Magento\Framework\Api\Search\SearchCriteriaInterface $searchCriteria

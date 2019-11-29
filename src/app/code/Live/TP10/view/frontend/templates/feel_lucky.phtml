@@ -2,6 +2,11 @@
 use Live\TP10\Block\FeelLucky;
 /** @var $block FeelLucky */
 ?>
-<?php if ($block->isFeelLuckEnabled()): ?>
-<input type="button" onclick="alert('Ok')" />
-<?php endif ?>
+<button type="button" class="action" data-trigger="trigger">
+    <span data-bind="i18n: 'Click Here'"></span>
+</button>
+<div data-mage-init='{"Magento_Ui/js/modal/modal":{"type":"popup","trigger": "[data-trigger=trigger]","title":"Title","buttons":[]}}'>
+    <div class="content">
+        <span>Un texte</span>
+    </div>
+</div>

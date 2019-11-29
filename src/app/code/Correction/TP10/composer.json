@@ -1,11 +1,11 @@
 {
-    "name": "correction/module-tp10",
+    "name": "formation/tp10",
     "description": "N/A",
     "config": {
         "sort-packages": true
     },
     "require": {
-        "correction/module-tp9": "*"
+        "formation/tp9": "*"
     },
     "type": "magento2-module",
     "license": [

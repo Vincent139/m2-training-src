@@ -1,22 +1,21 @@
 <?php
-namespace Correction\TP10\Ui\Component\Series\Listing\Columns;
 
+namespace Correction\TP10\Ui\Component\Listing\Column;
+
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\UrlInterface;
 
-/**
- * @api
- */
-class SeriesActions extends Column
+class VendorActions extends Column
 {
     /**
-     * @var UrlInterface
+     * @var \Magento\Framework\UrlInterface
      */
     protected $urlBuilder;
 
     /**
+     * SeriesActions constructor.
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
@@ -35,24 +34,20 @@ class SeriesActions extends Column
     }
 
     /**
-     * Prepare Data Source
-     *
-     * @param array $dataSource
-     * @return array
+     * @inheritDoc
      */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
-            foreach ($dataSource['data']['items'] as &$item) {
-                $item[$this->getData('name')]['edit'] = [
-                    'href' => $this->urlBuilder->getUrl(
-                        'formationtp10/series/edit',
-                        ['id' => $item['series_id']]
-                    ),
-                    'label' => __('Edit'),
-                    'hidden' => false,
-                    '__disableTmpl' => true
-                ];
+            foreach ($dataSource['data']['items'] as & $item) {
+                $name = $this->getData('name');
+                if (isset($item['vendor_id'])) {
+                    $item[$name]['edit'] = [
+                        'href' => $this->urlBuilder->getUrl('correctiontp10/vendors/edit', ['vendor_id' => $item['vendor_id']]),
+                        'label' => __('Edit'),
+                        '__disableTmpl' => true,
+                    ];
+                }
             }
         }
 

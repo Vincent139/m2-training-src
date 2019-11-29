@@ -1,6 +1,6 @@
 <?php
 
-namespace Correction\TP10\Controller\Adminhtml\Series;
+namespace Correction\TP10\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\App\ResponseInterface;
@@ -12,7 +12,7 @@ class Index extends Action
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'Correction_TP10::series';
+    const ADMIN_RESOURCE = 'Correction_TP10::vendors';
 
     /**
      * Execute action based on request and return result
@@ -25,7 +25,7 @@ class Index extends Action
     public function execute()
     {
         return $this->resultFactory->create(ResultFactory::TYPE_PAGE)
-            ->setActiveMenu('Correction_TP10::series')
-            ->addBreadcrumb(__('Series'), __('Series'));
+            ->setActiveMenu('Correction_TP10::vendors')
+            ->addBreadcrumb(__('Vendors'), __('Vendors'));
     }
 }

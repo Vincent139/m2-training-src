@@ -1,21 +1,18 @@
 <?php
 
-namespace Correction\TP10\Controller\Adminhtml\Series;
+namespace Correction\TP10\Controller\Adminhtml\Vendors;
 
-use Correction\TP4\Model\ResourceModel\Series;
+use Correction\TP4\Model\ResourceModel\Vendor;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 
 
-use Correction\TP4\Model\ResourceModel\Series\CollectionFactory;
+use Correction\TP4\Model\ResourceModel\Vendor\CollectionFactory;
 
 class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionInterface
 {
-
-    const ADMIN_RESOURCE = 'Correction_TP10::series_edit';
-
     /**
      * Massactions filter
      *
@@ -29,9 +26,9 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
     protected $collectionFactory;
 
     /**
-     * @var Series
+     * @var Vendor
      */
-    protected $seriesResource;
+    protected $vendorResource;
 
     /**
      * MassDelete constructor.
@@ -43,11 +40,11 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
         Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-        Series $vendorResource
+        Vendor $vendorResource
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
-        $this->seriesResource = $vendorResource;
+        $this->vendorResource = $vendorResource;
         parent::__construct($context);
     }
 
@@ -59,8 +56,8 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
         $collection = $this->filter->getCollection($this->collectionFactory->create());
 
         $seriesDeleted = 0;
-        foreach ($collection->getItems() as $series) {
-            $this->seriesResource->delete($series);
+        foreach ($collection->getItems() as $vendor) {
+            $this->vendorResource->delete($vendor);
             $seriesDeleted++;
         }
 
@@ -70,6 +67,6 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
             );
         }
 
-        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('correctiontp10/series/index');
+        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('correctiontp10/vendors/index');
     }
 }

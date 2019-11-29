@@ -1,9 +1,11 @@
 {
-    "name": "formation/tp10",
+    "name": "correction/module-tp10",
     "description": "N/A",
+    "config": {
+        "sort-packages": true
+    },
     "require": {
-        "magento/framework": "102.0.*",
-        "formation/tp9": "1.0.0"
+        "correction/module-tp9": "*"
     },
     "type": "magento2-module",
     "license": [
@@ -15,7 +17,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Formation\\TP10\\": ""
+            "Correction\\TP10\\": ""
         }
     },
     "version": "1.0.0"

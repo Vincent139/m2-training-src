@@ -1,5 +1,5 @@
 <?php
-namespace Correction\TP10\Controller\Adminhtml\Series;
+namespace Correction\TP10\Controller\Adminhtml\Vendors;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
 
@@ -10,7 +10,7 @@ class NewAction extends \Magento\Backend\App\Action implements HttpGetActionInte
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Correction_TP10::series_edit';
+    const ADMIN_RESOURCE = 'Correction_TP10::vendors_edit';
 
     /**
      * @var \Magento\Backend\Model\View\Result\Forward

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Formation_TP10::extra" title="Extra" translate="title" module="Formation_TP10" sortOrder="15" resource="Formation_TP10::extra"/>
-        <add id="Formation_TP10::extra_series" title="Series" translate="title" module="Formation_TP10" sortOrder="10" parent="Formation_TP10::extra" action="adminhtml/extra_series" resource="Formation_TP10::series"/>
-        <add id="Formation_TP10::extra_vendors" title="Vendors" translate="title" module="Formation_TP10" sortOrder="20" parent="Formation_TP10::extra" action="adminhtml/extra_vendors" resource="Formation_TP10::vendors"/>
+        <add id="Correction_TP10::extra" title="Extra items" translate="title" module="Correction_TP10" sortOrder="999999" dependsOnModule="Correction_TP10" resource="Correction_TP10::extra"/>
+        <add id="Correction_TP10::series" title="Series" translate="title" module="Correction_TP10" sortOrder="10" parent="Correction_TP10::extra" action="correctiontp10/series/" resource="Correction_TP10::series"/>
+        <add id="Correction_TP10::vendors" title="Vendors" translate="title" module="Correction_TP10" sortOrder="10" parent="Correction_TP10::extra" action="correctiontp10/vendors/" resource="Correction_TP10::vendors"/>
     </menu>
 </config>

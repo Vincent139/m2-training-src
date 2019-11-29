@@ -2,12 +2,14 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
     <acl>
         <resources>
-            <resource id="Formation_TP10::extra" sortOrder="15" title="Extra">
-                <resource id="Formation_TP10::series" sortOrder="10" title="Series view" translate="title">
-                    <resource id="Formation_TP10::series_edit" sortOrder="10" title="Series edit" translate="title" />
-                </resource>
-                <resource id="Formation_TP10::vendors" sortOrder="20" title="Vendors view" translate="title">
-                    <resource id="Formation_TP10::vendors_edit" sortOrder="10" title="Vendors edit" translate="title" />
+            <resource id="Magento_Backend::admin">
+                <resource id="Correction_TP10::extra" title="Extra items" translate="title" sortOrder="999999">
+                    <resource id="Correction_TP10::series" title="Series" translate="title" sortOrder="10">
+                        <resource id="Correction_TP10::series_edit" title="Series - edit" translate="title" sortOrder="10" />
+                    </resource>
+                    <resource id="Correction_TP10::vendors" title="Vendors" translate="title" sortOrder="10">
+                        <resource id="Correction_TP10::vendors_edit" title="Vendors - edit" translate="title" sortOrder="10" />
+                    </resource>
                 </resource>
             </resource>
         </resources>

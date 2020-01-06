@@ -23,6 +23,7 @@ class Coordinates extends \Magento\Framework\View\Element\Template
         array $data = []
     ) {
         $this->customerSession = $customerSession;
+        //$this->_isScopePrivate = true;
 
         parent::__construct($context, $data);
     }
